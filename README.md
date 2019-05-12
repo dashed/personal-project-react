@@ -5,16 +5,24 @@ Due by 9am on May 13th
 
 ## Requirements
 
+//TODO: login page just on the front end??
+
 - Create a login page: a user landing on the page should be able to input a username and submit it.
 
-- Once the user has logged in, they should be able to see two lists: 
+//TODO: api call with login info
+//TODO: use react router?
+- Once the user has logged in, they should be able to see two lists:
     - The most recent repositories (repos) that they have forked
     - their most recent pull requests.
 
+
+//TODO: open link in new tab?
 - Each of the forked repos should display the name of that repo as a link. When clicked, this should link to the base repo.
 
+//TODO: new api call?
 - Each of the pull requests should display the title of the pull request as a link. When clicked, this should link to that pull request.
 
+//TODO: conditional rendering (text colour?)
 - Each of the pull requests should have, in addition, a visual indicator for whether it is open, closed or merged. This could be colour coded, or just have the status in words next to it.
 
 ## Data Source
@@ -40,7 +48,7 @@ You can refer to the finished version of a similar Github app here to get starte
 ## Instructions
 
 1. Fork this repository to your own github
-2. Clone the forked version of this repository to your computer 
+2. Clone the forked version of this repository to your computer
 3. Set up create react app and make an initial commit to the master branch of your repo
 
 **Part One**
