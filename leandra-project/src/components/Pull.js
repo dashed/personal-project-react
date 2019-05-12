@@ -1,6 +1,5 @@
 import React from "react";
 import PullSingleRepo from './PullSingleRepo';
-// import { checkPropTypes } from "prop-types";
 
 const Pull = props => (
     <div className="flex-parent">

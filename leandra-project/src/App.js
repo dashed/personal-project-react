@@ -20,28 +20,10 @@ class App extends Component {
     });
   }
 
-  // componentDidMount(){
-  //   const url = `https://api.github.com/users/leandrar/events`;
-  //   fetch(url)
-  //     .then(results => results.json())
-  //     .then(data => {
-  //       this.setState({
-  //         userRepos: data,
-  //         searchName: true
-  //       })
-  //     });
-  // }
-
   handleSearch = (event) => {
     event.preventDefault();
     this.searchUser();
   };
-
-  //TODO: instead of setstate use dispatch with redux
-  //TODO: dispatch action to indicate somethign is loading
-  //TODO: in app, can do loading animation?
-  //TODO: dispatch: loading complete then populate state
-  //TODO: add error handling for dispatch, display error message
 
   searchUser = () => {
     let username = this.state.userName;
@@ -63,13 +45,21 @@ class App extends Component {
       .catch(err => console.log(err))
   };
 
-  //TODO: make two functions: one for each forked & pull events
-
-
 
   render(){
-    const forkedRepos = this.state.userRepos ? this.state.userRepos.filter(repo => repo.type === 'ForkEvent') : "";
-    const pullEvents = this.state.userRepos ? this.state.userRepos.filter(repo => repo.type === 'PullRequestEvent') : "";
+
+    const forkedRepos = events => {
+      return this.state.userRepos
+        ? this.state.userRepos.filter(event => event.type === "ForkEvent")
+        : "";
+    };
+
+    const pullRepos = events => {
+      return this.state.userRepos
+        ? this.state.userRepos.filter(event => event.type === "PullRequestEvent")
+        : "";
+    };
+
 
     return (
       <div className="App">
@@ -78,9 +68,14 @@ class App extends Component {
           handleSearch={this.handleSearch}
           userName={this.props.userName}
         />
-        {this.state.searchName ? <><Forked results={forkedRepos} />
-          < Pull results={pullEvents}/></> : "Please try another user name"}
-
+        {this.state.searchName ? (
+          <>
+            <Forked results={forkedRepos(this.state.userRepos)} />
+            <Pull results={pullRepos(this.state.userRepos)} />
+          </>
+        ) : (
+          "Please try another user name"
+        )}
       </div>
     );
 
