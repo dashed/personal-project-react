@@ -3,6 +3,7 @@ import React from "react";
 // import { checkPropTypes } from "prop-types";
 
 const mergeStatus = (status, merge) =>{
+    // return status === "closed" ? (merge ? "merged" : "closed") : "open";
     if (status === 'opened' && !merge){
         return 'Open'
     }else if (status === 'opened' && merge){
@@ -19,7 +20,7 @@ const PullSingleRepo = (props) => (
         {/* {console.log(props.reposToList.results.map(repo => repo.payload.action))}
 
         {console.log(props.reposToList.results.map(repo => repo.payload.pull_request.merged))} */}
-        {console.log(props.reposToList.results[1])}
+        {console.log(props.reposToList.results.map(repo => repo.payload.pull_request.url))}
 
         {/* {console.log(props.reposToList.results.map(repo => repo.payload.pull_request.html_url))} */}
 

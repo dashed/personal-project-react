@@ -1,18 +1,41 @@
-import React from 'react';
+import { connect } from "react-redux";
+import React, { Component } from "react";
+import { readUser, setUser } from "../store/action";
 
-class Login extends React.Component {
-
+class Login extends Component {
   render() {
+    const onSubmitFunc = event => {
+      event.preventDefault();
+      this.props.readUser(this.props.user);
+    };
     return (
-        <div className="body">
-        <h1>Please Input a GitHub user name</h1>
-            <form onSubmit={this.props.handleSearch}>
-                <input type="text" name="username" placeholder="Username" onChange={this.props.handleChange}/>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    )
+      <>
+        <p>hi</p>
+        <form onSubmit={onSubmitFunc}>
+          <input
+            type="text"
+            name="userId"
+            id=""
+            onChange={this.props.setUser}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </>
+    );
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  user: state.user,
+  events: state.events
+});
+
+const mapDispatchToProps = {
+  readUser,
+  setUser
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
