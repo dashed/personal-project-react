@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { readUser, setUser } from "../store/action";
+import Forked from './Forked';
+import Pull from './Pull';
 
 class Login extends Component {
   render() {
@@ -8,9 +10,22 @@ class Login extends Component {
       event.preventDefault();
       this.props.readUser(this.props.user);
     };
+
+    const forkedRepos = events => {
+      return this.props.events
+        ? this.props.events.filter(event => event.type === "ForkEvent")
+        : "";
+    };
+
+    const pullRepos = events => {
+      return this.props.events
+        ? this.props.events.filter(event => event.type === "PullRequestEvent")
+        : "";
+    };
+
     return (
       <>
-        <p>hi</p>
+        <h1>Enter a Github User name:</h1>
         <form onSubmit={onSubmitFunc}>
           <input
             type="text"
@@ -20,6 +35,8 @@ class Login extends Component {
           />
           <button type="submit">Submit</button>
         </form>
+        <Forked forkRepos = {forkedRepos(this.props.events)}/>
+        <Pull pullRepos={pullRepos(this.props.events)}/>
       </>
     );
   }
