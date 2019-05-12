@@ -5,36 +5,33 @@ Due by 9am on May 13th
 
 ## Requirements
 
-//TODO: login page just on the front end??
+- Create a landing page where a user should be able to input a valid git username and submit it.
 
-- Create a login page: a user landing on the page should be able to input a username and submit it.
-
-//TODO: api call with login info
-//TODO: use react router?
-- Once the user has logged in, they should be able to see two lists:
-    - The most recent repositories (repos) that they have forked
+- After submitting the username, two lists should be displayed:
+    - The most recent repositories (repos) forked by the username provided
     - their most recent pull requests.
 
-
-//TODO: open link in new tab?
 - Each of the forked repos should display the name of that repo as a link. When clicked, this should link to the base repo.
 
-//TODO: new api call?
 - Each of the pull requests should display the title of the pull request as a link. When clicked, this should link to that pull request.
 
-//TODO: conditional rendering (text colour?)
 - Each of the pull requests should have, in addition, a visual indicator for whether it is open, closed or merged. This could be colour coded, or just have the status in words next to it.
 
+- We would also recommend giving test driven development (TDD) a try.
+
 ## Data Source
-Your data source is the Github API! You'll be using the events and pull-request endpoints. Using the Github API display:
+Your data source is the Github API! You'll be using the user, repos, events, and pull requests endpoints. Using the Github API display:
+
 - the most recent repositories a given user has forked
 - the most recent pull requests a user has created
 
 The events endpoint will return all the most recent events (or actions) a user has completed. Everything from opening a pull request to forking a repo to starring a repo. All the different types of events are clarified by a type property. E.g. ForkEvent and PullRequestEvent which you can use to get the info you need. The pull request endpoint will give you the information you need to find out the status of a given pull request (whether its open, closed or merged)
 
 **EXAMPLES**
-Repos: https://api.github.com/users/pkanal/repos
-Pull requests: https://api.github.com/repos/bridge-school/bridgeschool.io/pulls
+- Users: https://api.github.com/users
+- Repos: https://api.github.com/users/pkanal/repos
+- Events: https://api.github.com/users/pkanal/events
+- Pull Request: https://api.github.com/repos/bridge-school/bridgeschool.io/pulls/39
 
 Go to those URLs in your browser to have a look at the JSON response. Its a good idea to copy these as example responses into a file in case you hit the rate limit of the API and that way you can keep on developing.
 
@@ -61,3 +58,11 @@ Create a new branch called `redux-solution` and port your React only solution to
 Once you have completed your personal project we'll provide a Google form for you to submit the link to your repo.
 
 If you have any questions, please reach out on slack on the #help-me or #dev-cohort-7 channel! Happy hacking!
+
+## Stretch Goals
+
+### Create tests
+Create unit tests for your:
+- Reducer(s)
+- Components
+- Any other helper functions your created
