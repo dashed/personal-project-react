@@ -1,4 +1,4 @@
-# Bridge Personal Project
+# Bridge Personal Project now with Redux
 
 ## Due Date
 Due by 9am on May 13th
