@@ -23,6 +23,8 @@ class Login extends Component {
         : "";
     };
 
+    //TODO: error handling if no such user
+
     return (
       <>
         <h1>Enter a Github User name:</h1>
