@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { pullStatus } from "../store/action";
 
 const PullRequestStatus = (props)=> {
 
@@ -16,24 +14,10 @@ const PullRequestStatus = (props)=> {
 
         return (
             <p className="flex-parent">
-                {props ? props.pullStatus(props.status) : ""}
-                {props ? pullReqStatus(props.merged, props.stateReq): ""}
+                {props ? pullReqStatus(props.merged, props.status): ""}
             </p>
         )
 
 };
 
-const mapStateToProps = state => ({
-    pullStat: state.pullStat,
-    merged: state.merged,
-    stateReq: state.stateReq
-});
-
-const mapDispatchToProps = {
-    pullStatus,
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(PullRequestStatus);
+export default PullRequestStatus;

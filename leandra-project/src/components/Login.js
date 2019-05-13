@@ -12,14 +12,16 @@ class Login extends Component {
     };
 
     const forkedRepos = events => {
-      return this.props.events
-        ? this.props.events.filter(event => event.type === "ForkEvent")
+      return events
+        ? events.filter(event => event.type === "ForkEvent")
         : "";
     };
 
     const pullRepos = events => {
-      return this.props.events
-        ? this.props.events.filter(event => event.type === "PullRequestEvent")
+      return events
+        ? events.filter(event => {
+          return event.type === "PullRequestEvent"
+        })
         : "";
     };
 
