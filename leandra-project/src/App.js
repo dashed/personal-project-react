@@ -9,7 +9,9 @@ class App extends Component {
     this.state = {
       userName: "",
       userRepos: [],
-      searchName: true
+      searchName: true,
+      loggedIn: false,
+      pullURL:[]
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -61,6 +63,7 @@ class App extends Component {
     };
 
 
+
     return (
       <div className="App">
         <Login
@@ -71,7 +74,8 @@ class App extends Component {
         {this.state.searchName ? (
           <>
             <Forked results={forkedRepos(this.state.userRepos)} />
-            <Pull results={pullRepos(this.state.userRepos)} />
+            <Pull results={pullRepos(this.state.userRepos)}
+            />
           </>
         ) : (
           "Please try another user name"

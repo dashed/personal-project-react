@@ -1,11 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import PullSingleRepo from './PullSingleRepo';
 
-const Pull = props => (
-    <div className="flex-parent">
-        {props.results.length ? "Pull Requests:" : ""}
-        <PullSingleRepo reposToList={props}/>
-    </div>
-);
+class Pull extends React.Component {
+
+    render(){
+        return (
+            <div className="flex-parent">
+                {this.props.results.length ? "Pull Requests:" : ""}
+                <PullSingleRepo reposToList={this.props.results} />
+            </div>
+        )
+    }
+
+};
+
+
 
 export default Pull;
