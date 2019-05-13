@@ -1,6 +1,9 @@
 const initialState = {
   user: null,
-  events: []
+  events: [],
+  pullStat: {},
+  merged:"",
+  stateReq:""
 };
 
 const reducer = (state = initialState, action) => {
@@ -9,6 +12,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: action.user };
     case "SET_EVENTS":
       return { ...state, events: action.events };
+    case "SET_STATUS":
+    return {...state, pullStat: action.pullStat, merged:action.pullStat.merged, stateReq: action.pullStat.state};
     default:
       return state;
   }

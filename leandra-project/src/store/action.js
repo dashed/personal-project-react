@@ -14,3 +14,16 @@ export const readUser = userId => dispatch => {
     .then(events => dispatch(popState(events)))
     .catch(err => console.log(err));
 };
+
+const popPullStatus = pullStat => ({
+  type: "SET_STATUS",
+  pullStat
+});
+
+export const pullStatus = repoURL => dispatch => {
+  fetch(repoURL)
+    .then(res => res.json())
+    .then(status => dispatch(popPullStatus(status)))
+    .catch(err => console.log(err));
+};
+
